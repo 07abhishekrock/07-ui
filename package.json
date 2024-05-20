@@ -1,0 +1,42 @@
+{
+  "name": "07-ui",
+  "version": "1.0.0",
+  "description": "Ui components for 07 ",
+  "main": "index.js",
+  "devDependencies": {
+    "@chromatic-com/storybook": "1.4.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@storybook/addon-essentials": "^8.1.1",
+    "@storybook/addon-interactions": "^8.1.1",
+    "@storybook/addon-links": "^8.1.1",
+    "@storybook/addon-onboarding": "^8.1.1",
+    "@storybook/blocks": "^8.1.1",
+    "@storybook/react": "^8.1.1",
+    "@storybook/react-vite": "^8.1.1",
+    "@storybook/test": "^8.1.1",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "chokidar": "^3.6.0",
+    "lucide-react": "^0.378.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "rollup": "^4.17.2",
+    "rollup-plugin-node-externals": "^7.1.2",
+    "rollup-plugin-sass": "^1.12.22",
+    "storybook": "^8.1.1",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  },
+  "scripts": {
+    "rollup": "rollup -c",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "watch-utils": "find tokens.ts | entr \"npx ts-node scripts/createVariablesScssFile.ts\""
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "react-aria": "^3.33.0"
+  }
+}

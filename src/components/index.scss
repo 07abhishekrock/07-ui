@@ -1,0 +1,11 @@
+@use './variables';
+
+*, *::after, *::before {
+     box-sizing: border-box;
+}
+
+button {
+     background: none;
+     border: 0; 
+     outline: 0;
+}

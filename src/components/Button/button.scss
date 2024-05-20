@@ -1,0 +1,41 @@
+.aj-button {
+     border-radius: var(--btnBorderRadius);
+     background: var(--btnBgClr);
+     color: var(--btnTextClr);
+
+     padding: var(--btnVerticalPadding) var(--btnHorizontalPadding);
+     font-size: var(--btnFontSize);
+     font-weight: var(--btnFontWeight);
+
+     position: relative;
+}
+
+.aj-button:hover {
+     background-color: var(--btnHoverStateBgClrDefault);
+     cursor: pointer;
+}
+
+.aj-button:focus {
+     outline: 1.5px solid var(--btnFocusedOutlineClr);
+}
+
+.aj-button-loading-indicator {
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     transform: translate(-50%, -50%);
+     animation: loading 0.6s linear infinite both;
+}
+
+.aj-button-block {
+     width: 100%
+}
+
+@keyframes loading {
+     from {
+          transform: translate(-50%, -50%) rotateZ(0deg)
+     }
+     to {
+          transform: translate(-50%, -50%) rotateZ(360deg)
+     }
+}
