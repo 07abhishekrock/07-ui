@@ -1,0 +1,7 @@
+{
+     "compilerOptions": {
+          "target": "ES2021",
+          "moduleResolution": "NodeNext"
+     },
+     "include": ["src/components/**/*", "src/theming/**/*", "src/stories/**/*"]
+}

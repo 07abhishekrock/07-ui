@@ -1,6 +1,7 @@
 import {PropsWithChildren, ReactNode, createContext, useContext, useEffect, useId, useMemo, useState} from 'react';
 import { Theme, lightTheme } from './tokens';
 import { combineObjValues } from '../utils'
+import { ThemeOverride } from './types';
 
 type ContextPayload = { 
      theme: string;
@@ -36,8 +37,6 @@ const ThemeProvider = ({children}: PropsWithChildren<{}>)=>{
 
 }
 
-
-
 export const useTokenForTheme = (): Theme=>{
      const {theme, allThemes} = useContext(ThemeContext)
 
@@ -58,20 +57,21 @@ const useApplyThemeToHTML = (theme: string)=>{
 }
 
 export const ThemeOverrideForInstance = ({ render, overridenTheme }: {
-     overridenTheme: Partial<Theme>,
+     overridenTheme: ThemeOverride,
      render: (overridenClass: string)=>ReactNode
 })=>{
  
      const { theme, setCurrentTheme, allThemes: defaultAllThemes } = useContext(ThemeContext)
      const currentThemeTokens = useTokenForTheme()
      const id = (useId()).replaceAll(':', '');
+     const newThemeTokens = useMemo(() => (typeof overridenTheme === 'function') ? overridenTheme(currentThemeTokens) : overridenTheme, [overridenTheme, currentThemeTokens])
 
      return <ThemeContext.Provider value={{
           theme,
           setCurrentTheme,
           allThemes: {
                ...defaultAllThemes,
-               [theme]: combineObjValues(currentThemeTokens, overridenTheme)
+               [theme]: combineObjValues(currentThemeTokens, newThemeTokens)
           }
      }}>
 
@@ -80,9 +80,16 @@ export const ThemeOverrideForInstance = ({ render, overridenTheme }: {
                     .overriden-${id} {
                          ${
                               Object
-                              .entries(overridenTheme)
+                              .entries(newThemeTokens)
                               .map(([k, v])=>{
-                                   return `--${k}: ${v};`
+                                   
+                                   if(typeof v === 'string'){
+                                        return `--${k}: ${v};`
+                                   }
+                                   else{
+                                        return 
+                                   }
+
                               })
                               .join('')
                          }

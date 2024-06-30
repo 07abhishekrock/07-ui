@@ -1,4 +1,11 @@
-.aj-button {
+.aj-icon-button span {
+     width: var(--iconButtonSize);
+     height: var(--iconButtonSize);
+     display: grid;
+     place-items: center;
+}
+
+.aj-icon-button {
      border-radius: var(--btnBorderRadius);
      background: var(--btnBgClr);
      color: var(--btnTextClr);
@@ -10,31 +17,21 @@
      position: relative;
 }
 
-.aj-button-inner {
-     display: flex;
-     align-items: center;
-     gap: var(--spacing4)
-}
-
-.aj-button:hover {
+.aj-icon-button:hover {
      background-color: var(--btnHoverStateBgClrDefault);
      cursor: pointer;
 }
 
-.aj-button:focus {
+.aj-icon-button:focus {
      outline: 1.5px solid var(--btnFocusedOutlineClr);
 }
 
-.aj-button-loading-indicator {
+.aj-icon-button-loading-indicator {
      position: absolute;
      left: 50%;
      top: 50%;
      transform: translate(-50%, -50%);
      animation: loading 0.6s linear infinite both;
-}
-
-.aj-button-block {
-     width: 100%
 }
 
 @keyframes loading {

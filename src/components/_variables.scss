@@ -1,4 +1,32 @@
 html[theme="light"]{
+
+	--bodyBase-fontSize: 1rem;
+	--bodyBase-fontWeight: 500;
+	--bodyBase-fontFamily: Inter;
+
+	--bodySmall-fontSize: 0.8rem;
+	--bodySmall-fontWeight: 500;
+	--bodySmall-fontFamily: Inter;
+
+	--bodyLarge-fontSize: 1.2rem;
+	--bodyLarge-fontWeight: 500;
+	--bodyLarge-fontFamily: Inter;
+
+	--heading-fontSize: 3rem;
+	--heading-fontWeight: 600;
+	--heading-fontFamily: Inter;
+
+	--bodyBaseHeavy-fontSize: 1rem;
+	--bodyBaseHeavy-fontWeight: 600;
+	--bodyBaseHeavy-fontFamily: Inter;
+
+	--bodySmallHeavy-fontSize: 0.8rem;
+	--bodySmallHeavy-fontWeight: 600;
+	--bodySmallHeavy-fontFamily: Inter;
+
+	--bodyLargeHeavy-fontSize: 1.2rem;
+	--bodyLargeHeavy-fontWeight: 600;
+	--bodyLargeHeavy-fontFamily: Inter;
 	--contentPrimary: #252525;
 	--contentSecondary: #535353;
 	--contentTertiary: #717171;
@@ -27,9 +55,12 @@ html[theme="light"]{
 	--spacing32: 32px;
 	--borderRadiusSmall: 4px;
 	--borderRadiusMedium: 10px;
-	--borderRadiusCircle: 100px;
+	--borderRadiusCircle: 100%;
 	--btnBorderRadius: 4px;
-	--btnFontSize: 16px;
+
+	--btnFontSize-fontSize: 1rem;
+	--btnFontSize-fontWeight: 500;
+	--btnFontSize-fontFamily: Inter;
 	--btnHorizontalPadding: 16px;
 	--btnVerticalPadding: 12px;
 	--btnFontWeight: 500;
@@ -38,4 +69,19 @@ html[theme="light"]{
 	--btnTextClr: #252525;
 	--btnFocusedOutlineWidth: 1.5px;
 	--btnFocusedOutlineClr: #252525;
+	--btnOutlineClr: rgba(0, 0, 0, 0);
+	--iconButtonSize: 24px;
+
+	--accordion-contentBgClr: #f9f9f9;
+	--accordion-contentOutlineClr: rgba(0, 0, 0, 0);
+	--accordion-contentPaddingHorizontal: 8px;
+	--accordion-contentPaddingVertical: 8px;
+	--accordion-headerBgClr: #f9f9f9;
+	--accordion-headerOpenedBgClr: #f9f9f9;
+	--accordion-headerOpenedOutlineClr: rgba(0,0,0,0);
+	--accordion-headerOutlineClr: rgba(0,0,0,0);
+	--accordion-headerPaddingHorizontal: 8px;
+	--accordion-headerPaddingVertical: 4px;
+	--accordion-headerCornerRadius: 8px;
+	--accordion-contentCornerRadius: 8px;
 }

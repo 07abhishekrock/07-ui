@@ -1,4 +1,16 @@
+import { AccordionThemeMeta } from "../components/Accordion/accordion.theme";
 import { resolveTokensWithReference } from "./utils";
+
+export const TypographyTokenValues = ['bodyBase' , 'bodySmall' , 'bodyLarge' , 'heading' , 'bodyBaseHeavy' , 'bodySmallHeavy' , 'bodyLargeHeavy'] as const;
+
+export type TypographyTokens = typeof TypographyTokenValues[number]
+export type TypographyMeta = {
+     fontWeight: string;
+     fontSize: string;
+     fontFamily: string;
+     letterSpacing: string;
+     lineHeight: string;
+}
 
 export type Theme = {
      contentPrimary: string;
@@ -38,11 +50,25 @@ export type Theme = {
      btnHoverStateBgClrDefault: string;
      btnFocusedOutlineWidth: string;
      btnFocusedOutlineClr: string;
+     btnOutlineClr: string;
      btnBgClr: string;
      btnTextClr: string;
-}
+
+     iconButtonSize: string;
+     accordion: AccordionThemeMeta
+} & Record<TypographyTokens, TypographyMeta>
 
 const baseThemeNoColors: Theme = {
+
+     bodyBase: {fontSize: "1rem", fontWeight: "500", fontFamily: "Inter", letterSpacing: "0.01em", lineHeight: "105%"},
+     bodySmall: {fontSize: "0.8rem", fontWeight: "500", fontFamily: "Inter", letterSpacing: "0.01em", lineHeight: "105%"},
+     bodyLarge: {fontSize: "1.2rem", fontWeight: "500", fontFamily: "Inter", letterSpacing: "0.01em", lineHeight: "105%"},
+     heading: {fontSize: "3rem", fontWeight: "600", fontFamily: "Inter", letterSpacing: "0.01em", lineHeight: "105%"},
+
+     bodyBaseHeavy: {fontSize: "1rem", fontWeight: "600", fontFamily: "Inter", letterSpacing: "0.01em", lineHeight: "105%"},
+     bodySmallHeavy: {fontSize: "0.8rem", fontWeight: "600", fontFamily: "Inter", letterSpacing: "0.01em", lineHeight: "105%"},
+     bodyLargeHeavy: {fontSize: "1.2rem", fontWeight: "600", fontFamily: "Inter", letterSpacing: "0.01em", lineHeight: "105%"},
+
      contentPrimary: "",
      contentSecondary: "",
      contentTertiary: "",
@@ -71,10 +97,10 @@ const baseThemeNoColors: Theme = {
      spacing32: "32px",
      borderRadiusSmall: "4px",
      borderRadiusMedium: "10px",
-     borderRadiusCircle: "100px",
+     borderRadiusCircle: "100%",
 
      btnBorderRadius: "4px",
-     btnFontSize: "16px",
+     btnFontSize: "$bodyBase",
      btnHorizontalPadding: "16px",
      btnVerticalPadding: "12px",
      btnFontWeight: "500",
@@ -82,7 +108,25 @@ const baseThemeNoColors: Theme = {
      btnBgClr: "$bgSecondary",
      btnTextClr: "$contentPrimary",
      btnFocusedOutlineWidth: "1.5px",
-     btnFocusedOutlineClr: "$borderPrimary"
+     btnFocusedOutlineClr: "$borderPrimary",
+     btnOutlineClr: "rgba(0, 0, 0, 0)",
+
+     iconButtonSize: "$spacing24",
+
+     accordion: {
+          contentBgClr: "$bgSecondary",
+          contentOutlineClr: "rgba(0, 0, 0, 0)",
+          contentPaddingHorizontal: "$spacing8",
+          contentPaddingVertical: "$spacing8",
+          headerBgClr: "$bgSecondary",
+          headerOpenedBgClr: "$bgSecondary",
+          headerOpenedOutlineClr: "rgba(0,0,0,0)",
+          headerOutlineClr: "rgba(0,0,0,0)",
+          headerPaddingHorizontal: "$spacing8",
+          headerPaddingVertical: "$spacing4",
+          headerCornerRadius: "$spacing8",
+          contentCornerRadius: "$spacing8"
+     }
 }
 
 export const lightTheme: Theme = resolveTokensWithReference({
@@ -108,3 +152,4 @@ export const lightTheme: Theme = resolveTokensWithReference({
      borderDisabled: "#c3c3c3",
      borderWarning: "#ffe7a9"
 })
+

@@ -3,6 +3,8 @@ import type { Preview } from "@storybook/react";
 
 import ThemeProvider from '../src/theming/ThemeProvider'
 
+import './storybook.css'
+
 const preview: Preview = {
   parameters: {
     controls: {

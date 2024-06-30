@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Text } from '../components';
-import { allIconNames } from '../components/IconView';
+import { Image } from '../components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: '07UI/Button',
-  component: Button,
+  title: '07UI/Image',
+  component: Image,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered'
@@ -19,24 +18,21 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    isAccent: {},
-    isLoading: {},
-    size: {
-      control: 'select',
-      options: ['small', 'medium', 'large']
-    },
-    leftIconName: {
-      control: 'select',
-      options: allIconNames
-    },
-    rightIconName: {
-      control: 'select',
-      options: allIconNames
-    }
+     src: {
+          control: 'text'
+     },
+     corner: {
+          control: 'select',
+          options: ['rounded', 'default', 'circle'],
+     },
+     fit: {
+          control: 'select',
+          options: ['cover', 'contain', 'fill']
+     }
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: {},
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Image>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -44,11 +40,10 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-    isAccent: false,
-    isLoading: false,
-    children: "hello world",
-    size: 'medium',
-    isDisabled: false,
-    isBlock: false
+     src: "https://plus.unsplash.com/premium_photo-1683910665313-877b5dd42d4a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+     corner: 'rounded',
+     fit: 'contain',
+     height: 400,
+     width: 400
   },
 };

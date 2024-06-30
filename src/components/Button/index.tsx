@@ -2,32 +2,36 @@ import { PropsWithChildren, useRef } from 'react';
 import {AriaButtonOptions, useButton} from 'react-aria';
 
 import './button.scss';
-import { Theme } from '../../theming/tokens';
 import { ThemeOverrideForInstance, useTokenForTheme } from '../../theming/ThemeProvider';
 import cn from 'classnames';
 import { Loader2Icon } from 'lucide-react'
+import { ThemeOverride } from '../../theming/types';
+import IconView, { IconProps } from '../IconView';
 
-export type ButtonProps = PropsWithChildren<{
+export type ButtonProps = {
      isAccent: Boolean;
      isLoading: Boolean;
      size: 'small' | 'medium' | 'large',
      isBlock?: Boolean;
-} & AriaButtonOptions<"button">>
+     children: string;
+     leftIconName?: IconProps['icon'];
+     rightIconName?: IconProps['icon'];
+} & AriaButtonOptions<"button">
 
 type ButtonPropsWithClassName = ButtonProps & {
      className?: string;
 }
 
-const buttonSmallOverride: Partial<Theme> = {
-     btnFontSize: "14px",
+const buttonSmallOverride: ThemeOverride = (oldTheme)=>({
+     btnFontSize: oldTheme.bodySmall.fontSize,
      btnVerticalPadding: "12px",
      btnHorizontalPadding: "12px"
-}
+})
 
-const buttonLargeOverride: Partial<Theme> = {
-     btnFontSize: "20px",
+const buttonLargeOverride: ThemeOverride = (oldTheme)=>({
+     btnFontSize: oldTheme.bodyLarge.fontSize,
      btnBorderRadius: "8px"
-}
+})
 
 const SmallButton = (props: ButtonProps)=>{
 
@@ -88,7 +92,7 @@ const AccentWrappedButton = (props: ButtonPropsWithClassName) => {
      return <ButtonCore {...props} />
 }
 
-const ButtonCore = ({isAccent, isLoading, children, ...props}: ButtonPropsWithClassName)=>{
+export const ButtonCore = ({isAccent, isLoading, children, leftIconName, rightIconName, size, ...props}: ButtonPropsWithClassName)=>{
 
      const buttonRef = useRef<HTMLButtonElement>()
      const themeToken = useTokenForTheme()
@@ -99,8 +103,10 @@ const ButtonCore = ({isAccent, isLoading, children, ...props}: ButtonPropsWithCl
           { ['aj-button-block']: props.isBlock },
           props.className
      )} {...buttonProps}>
-          <span style={{opacity: isLoading ? 0 : 1}}>
+          <span className="aj-button-inner" style={{opacity: isLoading ? 0 : 1}}>
+               {leftIconName ? <IconView icon={leftIconName} size={size}/> : null}
                {children}
+               {rightIconName ? <IconView icon={rightIconName} size={size}/> : null}
           </span>
           {
           isLoading ? 
