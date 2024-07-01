@@ -3,30 +3,44 @@ html[theme="light"]{
 	--bodyBase-fontSize: 1rem;
 	--bodyBase-fontWeight: 500;
 	--bodyBase-fontFamily: Inter;
+	--bodyBase-letterSpacing: 0.01em;
+	--bodyBase-lineHeight: 105%;
 
 	--bodySmall-fontSize: 0.8rem;
 	--bodySmall-fontWeight: 500;
 	--bodySmall-fontFamily: Inter;
+	--bodySmall-letterSpacing: 0.01em;
+	--bodySmall-lineHeight: 105%;
 
 	--bodyLarge-fontSize: 1.2rem;
 	--bodyLarge-fontWeight: 500;
 	--bodyLarge-fontFamily: Inter;
+	--bodyLarge-letterSpacing: 0.01em;
+	--bodyLarge-lineHeight: 105%;
 
 	--heading-fontSize: 3rem;
 	--heading-fontWeight: 600;
 	--heading-fontFamily: Inter;
+	--heading-letterSpacing: 0.01em;
+	--heading-lineHeight: 105%;
 
 	--bodyBaseHeavy-fontSize: 1rem;
 	--bodyBaseHeavy-fontWeight: 600;
 	--bodyBaseHeavy-fontFamily: Inter;
+	--bodyBaseHeavy-letterSpacing: 0.01em;
+	--bodyBaseHeavy-lineHeight: 105%;
 
 	--bodySmallHeavy-fontSize: 0.8rem;
 	--bodySmallHeavy-fontWeight: 600;
 	--bodySmallHeavy-fontFamily: Inter;
+	--bodySmallHeavy-letterSpacing: 0.01em;
+	--bodySmallHeavy-lineHeight: 105%;
 
 	--bodyLargeHeavy-fontSize: 1.2rem;
 	--bodyLargeHeavy-fontWeight: 600;
 	--bodyLargeHeavy-fontFamily: Inter;
+	--bodyLargeHeavy-letterSpacing: 0.01em;
+	--bodyLargeHeavy-lineHeight: 105%;
 	--contentPrimary: #252525;
 	--contentSecondary: #535353;
 	--contentTertiary: #717171;
@@ -61,6 +75,8 @@ html[theme="light"]{
 	--btnFontSize-fontSize: 1rem;
 	--btnFontSize-fontWeight: 500;
 	--btnFontSize-fontFamily: Inter;
+	--btnFontSize-letterSpacing: 0.01em;
+	--btnFontSize-lineHeight: 105%;
 	--btnHorizontalPadding: 16px;
 	--btnVerticalPadding: 12px;
 	--btnFontWeight: 500;
@@ -73,10 +89,11 @@ html[theme="light"]{
 	--iconButtonSize: 24px;
 
 	--accordion-contentBgClr: #f9f9f9;
-	--accordion-contentOutlineClr: rgba(0, 0, 0, 0);
+	--accordion-contentOutlineClr: rgba(0, 0, 0, 1);
 	--accordion-contentPaddingHorizontal: 8px;
 	--accordion-contentPaddingVertical: 8px;
 	--accordion-headerBgClr: #f9f9f9;
+	--accordion-headerHoverBgClr: #f9f9f9;
 	--accordion-headerOpenedBgClr: #f9f9f9;
 	--accordion-headerOpenedOutlineClr: rgba(0,0,0,0);
 	--accordion-headerOutlineClr: rgba(0,0,0,0);

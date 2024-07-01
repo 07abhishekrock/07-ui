@@ -7,13 +7,18 @@ import { PropsWithChildren, useRef } from "react";
 import cn from 'classnames'
 
 import './pill.scss'
+import { ButtonCore } from "../Button";
+import { IconProps } from "../IconView";
 
-type PillProps = PropsWithChildren<AriaButtonOptions<"button"> & {
+type PillProps = AriaButtonOptions<"button"> & {
      isSelected: Boolean;
      isAccent: Boolean;
      size: 'small' | 'medium' | 'large';
      isLoading: Boolean;
-}>
+     children: string;
+     leftIconName?: IconProps['icon'],
+     rightIconName?: IconProps['icon'],
+}
 
 type ButtonPropsWithClassName = PillProps & {
      className?: string;
@@ -79,7 +84,7 @@ const AccentWrappedButton = (props: ButtonPropsWithClassName) => {
                     btnHoverStateBgClrDefault: themeToken.bgDisabled
                }}
                render={
-                    (overridenClassName)=><PillButtonCore {...props} className={cn(overridenClassName, props.className)} />
+                    (overridenClassName)=><ButtonCore {...props} className={cn(overridenClassName, props.className)} />
                }
           />
      }
@@ -94,7 +99,7 @@ const AccentWrappedButton = (props: ButtonPropsWithClassName) => {
                     btnFocusedOutlineClr: themeToken.contentAccent
                }}
                render={
-                    (overridenClassName)=><PillButtonCore {...props} className={cn(overridenClassName, props.className)} />
+                    (overridenClassName)=><ButtonCore {...props} className={cn(overridenClassName, props.className)} />
                }
           />
      }
@@ -108,38 +113,13 @@ const AccentWrappedButton = (props: ButtonPropsWithClassName) => {
                     btnFocusedOutlineClr: themeToken.contentAccent
                }}
                render={
-                    (overridenClassName)=><PillButtonCore {...props} className={cn(overridenClassName, props.className)} />
+                    (overridenClassName)=><ButtonCore {...props} className={cn(overridenClassName, props.className)} />
                }
           />
      }
 
 
-     return <PillButtonCore {...props} />
-}
-
-const PillButtonCore = ({isAccent, isLoading, children, ...props}: ButtonPropsWithClassName)=>{
-
-     const buttonRef = useRef<HTMLButtonElement>()
-     const themeToken = useTokenForTheme()
-     const { buttonProps } = useButton(props, buttonRef)
-
-     return <button className={cn(
-          'aj-pill-button',
-          props.className
-     )} {...buttonProps}>
-          <span style={{opacity: isLoading ? 0 : 1}}>
-               {children}
-          </span>
-          {
-          isLoading ? 
-               <Loader2Icon
-                    fontSize={themeToken.btnFontSize} 
-                    color={themeToken.btnTextClr} 
-                    className="aj-icon-button-loading-indicator"
-               /> : null
-          }         
-     </button>
-
+     return <ButtonCore {...props} />
 }
 
 const Pill = (props: PillProps)=>{

@@ -34,3 +34,11 @@ export const Default: Story = {
     children: <Text typographyToken="bodyBaseHeavy">Accordion Content</Text>
   },
 };
+
+export const DefaultClosed: Story = {
+  args: {
+    isOpenByDefault: false,
+    header: <Text typographyToken="bodyBase">Accordion Header</Text>,
+    children: <Text typographyToken="bodyBaseHeavy">Accordion Content</Text>
+  },
+};

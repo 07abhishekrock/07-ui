@@ -115,10 +115,11 @@ const baseThemeNoColors: Theme = {
 
      accordion: {
           contentBgClr: "$bgSecondary",
-          contentOutlineClr: "rgba(0, 0, 0, 0)",
+          contentOutlineClr: "rgba(0, 0, 0, 1)",
           contentPaddingHorizontal: "$spacing8",
           contentPaddingVertical: "$spacing8",
           headerBgClr: "$bgSecondary",
+          headerHoverBgClr: "$bgSecondary", 
           headerOpenedBgClr: "$bgSecondary",
           headerOpenedOutlineClr: "rgba(0,0,0,0)",
           headerOutlineClr: "rgba(0,0,0,0)",

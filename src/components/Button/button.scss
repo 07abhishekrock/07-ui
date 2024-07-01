@@ -8,12 +8,14 @@
      font-weight: var(--btnFontWeight);
 
      position: relative;
+     outline: 1.5px solid var(--btnOutlineClr)
 }
 
 .aj-button-inner {
      display: flex;
      align-items: center;
-     gap: var(--spacing4)
+     gap: var(--spacing4);
+     justify-content: center
 }
 
 .aj-button:hover {

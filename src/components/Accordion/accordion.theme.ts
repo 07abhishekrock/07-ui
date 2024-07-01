@@ -11,4 +11,5 @@ export type AccordionThemeMeta = {
      headerOpenedOutlineClr: string;
      headerCornerRadius: string;
      contentCornerRadius: string;
+     headerHoverBgClr: string;
 }

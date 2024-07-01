@@ -15,35 +15,40 @@ export type CoreAccordionProps = Omit<AccordionProps, 'header'>
 
 const iconButtonOverride: ThemeOverride = {
      btnFocusedOutlineClr: "transparent",
-     btnBgClr: "transparent"
+     btnBgClr: "transparent",
+     btnHoverStateBgClrDefault: "transparent",
+     accordion: {
+          contentOutlineClr: "black"
+     }
 }
 
-export const AccordionCore = (props: AccordionProps)=>{
+export const AccordionCore = (props: AccordionProps & {className: string})=>{
 
-     const contentRef = useRef<HTMLDivElement>();
-     const {styles, isCollapsed, setIsCollapsed} = useAccordion(contentRef, props.isOpenByDefault);
+     const {styles, isCollapsed, setIsCollapsed, storeLatestHeight} = useAccordion(props.isOpenByDefault);
 
-     return <ThemeOverrideForInstance overridenTheme={iconButtonOverride} render={(class_)=>{
-          return <div className={`aj-accordion-wrapper ${isCollapsed ? "collapsed" : ""} ${class_}`}>
-               <div className="aj-accordion-header">
-                    <div className="aj-accordion-header-inner">
-                         {props.header}
-                    </div>
-                    <div className={`aj-accordion-header-icon`}>
-                         <IconButton icon="ChevronDown" size="small" onClick={()=>{
-                              setIsCollapsed(!isCollapsed)
-                         }}/>
-                    </div>
+     return <div className={`aj-accordion-wrapper ${isCollapsed ? "collapsed" : ""} ${props.className}`}>
+          <div className="aj-accordion-header" onClick={()=>{
+                         setIsCollapsed(!isCollapsed)
+                    }}>
+               <div className="aj-accordion-header-inner">
+                    {props.header}
                </div>
-               <div className="aj-accordion-content-wrapper" style={styles.contentWrapper}>
-                    <div className="aj-accordion-content" ref={contentRef}>
-                         {props.children}
-                    </div>
+               <div className={`aj-accordion-header-icon`}>
+                    <IconButton icon="ChevronDown" size="small" />
                </div>
           </div>
-     }}>
-     </ThemeOverrideForInstance>
-
+          <div className="aj-accordion-content-wrapper" style={styles.contentWrapper}>
+               <div className="aj-accordion-content" ref={storeLatestHeight}>
+                    {props.children}
+               </div>
+          </div>
+     </div>
 }
 
-export default AccordionCore;
+const Accordion = (props: AccordionProps)=>{
+     return <ThemeOverrideForInstance overridenTheme={iconButtonOverride} render={(class_)=>{
+          return <AccordionCore {...props} className={class_}/>
+     }}/>
+}
+
+export default Accordion;

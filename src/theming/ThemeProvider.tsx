@@ -2,6 +2,7 @@ import {PropsWithChildren, ReactNode, createContext, useContext, useEffect, useI
 import { Theme, lightTheme } from './tokens';
 import { combineObjValues } from '../utils'
 import { ThemeOverride } from './types';
+import { recurseObjectsIntoSnakeCaseVariables } from './utils';
 
 type ContextPayload = { 
      theme: string;
@@ -87,7 +88,7 @@ export const ThemeOverrideForInstance = ({ render, overridenTheme }: {
                                         return `--${k}: ${v};`
                                    }
                                    else{
-                                        return 
+                                        return recurseObjectsIntoSnakeCaseVariables(k, v)
                                    }
 
                               })

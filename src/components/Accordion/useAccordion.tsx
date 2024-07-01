@@ -1,39 +1,46 @@
 import {MutableRefObject, useEffect, useRef, useState} from 'react';
 
 export const useAccordion = (
-     contentRef: MutableRefObject<HTMLElement>,
      isOpenByDefault = false
 )=>{
      const [contentHeight, setContentHeight] = useState(0)
      const [isCollapsed, setIsCollapsed] = useState(!isOpenByDefault)
      const [transition, setTransition] = useState(!isOpenByDefault)
      const firstRender = useRef(true)
+     const maxHeight = useRef(null)
 
      useEffect(()=>{
 
-          if(firstRender.current){
-               setTransition(false)
-          }
-          else{
-               setTransition(true)
-          }
-
-          if(contentRef && contentRef.current){
+          if(maxHeight){
                if(isCollapsed){
                     setContentHeight(0)
                }
                else{
-                    setContentHeight(contentRef.current.offsetHeight)
+                    setContentHeight(maxHeight.current)
                }
           }
 
-          firstRender.current = false
+          if(firstRender.current){
+               firstRender.current = false;
+               setTransition(true)
+          }
+
 
      }, [isCollapsed])
 
      return {
           isCollapsed,
           setIsCollapsed,
+          storeLatestHeight: (element: HTMLElement)=>{
+               if(element){
+                    if(maxHeight.current !== element.offsetHeight){
+                         maxHeight.current = element.offsetHeight
+                         if(!isCollapsed){
+                              setContentHeight(maxHeight.current)
+                         }
+                    }
+               }
+          },
           styles: {
                contentWrapper: {
                     overflow: 'hidden',
@@ -45,27 +52,3 @@ export const useAccordion = (
 
 }
 
-const Accordion = ()=>{
-
-     const headerRef = useRef(null)
-     const contentRef = useRef(null)
-     const {
-          isCollapsed,
-          setIsCollapsed,
-          styles
-     } = useAccordion(
-          contentRef,
-          true
-     )
-
-     return <>
-          <div id="accordion-wrapper">
-          <div id="accordion-header" onClick={()=>setIsCollapsed(c=>!c)} ref={headerRef}>Accordion Header</div>
-               <div id="accordion-content-wrapper" style={styles.contentWrapper}>
-               <div id="accordion-content" ref={contentRef}>
-               Accordion content can be very long and can be anything Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis nihil quo vero natus quia maiores dolore perferendis at reprehenderit corporis.
-               </div>
-               </div>
-          </div>
-     </>
-}

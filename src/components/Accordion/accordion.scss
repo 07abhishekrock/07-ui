@@ -10,14 +10,22 @@
 
      padding: var(--accordion-headerPaddingVertical) var(--accordion-headerPaddingHorizontal);
      padding-right: var(--spacing4);
-     background: var(--accordion-headerBgClr);
+     background: var(--accordion-headerOpenedBgClr);
 
      border-radius: var(--accordion-headerCornerRadius) var(--accordion-headerCornerRadius) 0 0;
      transition: 0.3s ease-out border-radius;
+     cursor: pointer;
+
+     outline: 1.5px solid var(--accordion-headerOutlineClr);
+}
+
+.aj-accordion-header:hover {
+     background: var(--accordion-headerHoverBgClr);
 }
 
 .aj-accordion-wrapper.collapsed .aj-accordion-header {
      border-radius: var(--accordion-headerCornerRadius) var(--accordion-headerCornerRadius);
+     background: var(--accordion-headerBgClr);
 }
 
 .aj-accordion-header-inner {
@@ -28,6 +36,7 @@
      background: var(--accordion-contentBgClr);
      padding: var(--accordion-contentPaddingVertical) var(--accordion-contentPaddingHorizontal);
      border-radius:  0 0 var(--accordion-headerCornerRadius) var(--accordion-headerCornerRadius);
+     border: 1.5px solid var(--accordion-contentOutlineClr);
 }
 
 .aj-accordion-header-icon {

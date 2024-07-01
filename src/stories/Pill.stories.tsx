@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Pill } from '../components';
+import { allIconNames } from '../components/IconView';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -18,12 +19,26 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    isAccent: {},
-    isLoading: {},
-    isSelected: {},
+    isAccent: {
+      control: 'boolean'
+    },
+    isLoading: {
+      control: 'boolean'
+    },
+    isSelected: {
+      control: 'boolean'
+    },
     size: {
       control: 'select',
       options: ['small', 'medium', 'large']
+    },
+    leftIconName: {
+      control: 'select',
+      options: allIconNames
+    },
+    rightIconName: {
+      control: 'select',
+      options: allIconNames
     }
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
